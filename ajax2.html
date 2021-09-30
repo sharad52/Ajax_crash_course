@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax -local jason</title>
+</head>
+<body>
+    <button id="button1">Get User</button>
+    <button id="button2">Get Users</button>
+    <br><br>
+    <h1>User </h1>
+    <div id="user">
+
+    </div>
+
+    <h1>Users</h1>
+    <div id="users"></div>
+
+
+    <script>
+        //button1
+        document.getElementById("button1").addEventListener("click",loadUser);
+        //button2
+        document.getElementById("button2").addEventListener("click",loadUsers);
+
+
+        function loadUser(){
+            let xhttp = new XMLHttpRequest();
+            //console.log(xhttp);
+            xhttp.open('GET','user.json',true);
+            xhttp.onload = function(){
+                if (xhttp.status == 200) {
+                    var user = JSON.parse(this.responseText);  //changes json to js objects
+                    let output = '';
+                    output += '<ul>' +
+                        '<li> ID: ' + user.id + '</li>'+
+                        '<li> NAME: ' + user.name + '</li>'+
+                        '<li> CONTACT: ' + user.contact + '</li>'+
+                        '<li> EMAIL: ' + user.email + '</li>'+
+                        '</ul>';
+                    document.getElementById('user').innerHTML = output;
+                        
+                    //document.getElementById("user").innerHTML= `Id:${user.id},<br>Name:${user.name},<br>mobile:${user.contact}`;
+                } else {
+                    console.log("not loaded properly")
+                }
+            }
+            xhttp.send()
+
+        }
+        //loadUsers Function
+
+        function loadUsers(){
+            let xhttp = new XMLHttpRequest();
+            //console.log(xhttp);
+            xhttp.open('GET','user2.json',true);
+            xhttp.onload = function(){
+                if (xhttp.status == 200) {
+                    var users = JSON.parse(this.responseText);  //changes json to js objects
+                    let output = '';
+                    for (let i = 0; i < users.length; i++) {
+                        output += '<ul>' +
+                            '<li> ID: ' + users[i].id + '</li>'+
+                            '<li> NAME: ' + users[i].name + '</li>'+
+                            '<li> CONTACT: ' + users[i].contact + '</li>'+
+                            '<li> EMAIL: ' + users[i].email + '</li>'+
+                            '</ul>';
+                    }
+                    document.getElementById('users').innerHTML = output;
+                } else {
+                    console.log("not loaded properly")
+                }
+            }
+            xhttp.send()
+
+        }
+
+    </script>
+</body>
+</html>

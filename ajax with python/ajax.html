@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX with python</title>
+    <style>
+        .container {
+            padding: 10px;
+            margin-left: 80px;
+        }
+        @media (max-width:576px) {
+            .container {
+                margin-left: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Ajax tutorials with python </h1>
+        <form id='nameForm' method="GET">
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name">
+            <br><br>
+            <input type="submit"id="btn" value="Submit">
+        </form>
+    </div>
+    <!-- script files here -->
+    <script>
+        document.getElementById("nameForm").addEventListener('submit',getName);
+
+        function getName(e) {
+            e.preventDefault();
+
+            var name = document.getElementById("name").value;
+            var nameValue = "NAME:" + name;
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.open('GET','./action.py',true);
+
+            xhttp.setRequestHeader('content-type','appliation/x-www-form-urlencoded');
+
+            xhttp.onload = function(){
+                let nameData = '';
+                if (xhttp.status == 200){
+                    console.log(this.response)
+                } else {
+                    alert('failed');
+                }
+            }
+            xhttp.send(nameValue);
+        }
+        
+    </script>
+</body>
+</html>

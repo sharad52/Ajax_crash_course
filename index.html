@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Core</title>
+    <style>
+        .container {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            background: #ff00ff;
+        }
+        .animate {
+            height: 10px;
+            width: 10px;
+            background: #aaaaaa;
+        }
+    </style>
+</head>
+<body>
+    <h2>JavaScript Core</h2>
+    <p id='demo'></p>
+    <p id="date"></p>
+    <p id="eachSum">
+
+    </p>
+    <p id="selfi">
+
+    </p>
+    <p id="eachTotal"></p>
+    <button onclick="document.getElementById('date').innerHTML=Date()">Show date</button><br>
+    <br>
+
+    <input type="button" value="Click To CheckIn" id="testbtn">
+    <br>
+    <br>
+
+<!-- form  -->
+    <form name="inform" action="#" id="inform">
+        <label for="username">Name:</label>
+        <input type="text" name="username" id="username"><br><br>
+        <label for="useremail">Email:</label>
+        <input type="email" name="useremail" id="useremail"><br><br>
+        <input type="submit" value="Submit">
+
+    </form>
+    <!-- demonastration of animation 
+     -->
+     <div class="container">
+         <div class="animate" id="anim">
+
+         </div>
+     </div>
+<!-- form  -->
+     <p id="field"></p>
+     <button id="ajaxbtn"> ShowAJAX content </button>
+
+
+
+    <script src="./app.js"></script>
+</body>
+</html>
